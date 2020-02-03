@@ -2,7 +2,10 @@ import { prisma } from "../../../generated/prisma-client";
 
 export default {
     Post: {
-    isLiked: async (parent, _, { request }) => {
+      files:parent =>prisma.post({id:parent.id}).files(),
+      comments:parent =>prisma.post({id:parent.id}).comments(),
+      user:parent =>prisma.post({id:parent.id}).user(),
+      isLiked: async (parent, _, { request }) => {
       const { user } = request;
       const { id } = parent;
       return prisma.$exists.like({
@@ -26,6 +29,7 @@ export default {
           where: { post: { id: parent.id } }
         })
         .aggregate()
-        .count()
+        .count(),
+        
   }
 };

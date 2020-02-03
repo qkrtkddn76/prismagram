@@ -1,5 +1,5 @@
-import { prisma } from "../../../generated/prisma-client";
-import { ROOM_FRAGMENT } from "../../fragment";
+import { prisma } from "../../../../generated/prisma-client";
+import { ROOM_FRAGMENT } from "../../../fragment";
 export default {
   Mutation: {
     sendMessage: async (_, args, { request, isAuthenticated }) => {
